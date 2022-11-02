@@ -21,7 +21,7 @@ public class BrandManager implements BrandService {
     public List<Brand> getAll() {
         // Business kuralları
 
-        return brandRepository.getAll();
+        return brandRepository.findAll();
     }
     
 }

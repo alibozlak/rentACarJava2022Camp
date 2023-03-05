@@ -1,24 +1,21 @@
 package io.kodlama.rentACar.entities.concretes;
 
-import javax.persistence.*;
-
 import lombok.AllArgsConstructor;
-// import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.util.List;
 
-@Entity
-@Table(name = "brands")
-// @Data
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class Brand {
-    
+@NoArgsConstructor
+@Table(name = "models")
+@Entity
+public class Model {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -27,7 +24,10 @@ public class Brand {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "brand")
-    private List<Model> models;
-    
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
+
+    @OneToMany(mappedBy = "model")
+    private List<Car> cars;
 }

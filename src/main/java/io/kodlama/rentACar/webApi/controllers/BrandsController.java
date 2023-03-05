@@ -11,6 +11,8 @@ import io.kodlama.rentACar.business.abstracts.BrandService;
 import io.kodlama.rentACar.business.requests.CreateBrandRequest;
 import io.kodlama.rentACar.business.responses.GetAllBrandsResponse;
 
+import javax.validation.Valid;
+
 @RestController     // <--- Annotation (Bilgilendirme)
 @RequestMapping("/api/brands")
 public class BrandsController {
@@ -34,7 +36,7 @@ public class BrandsController {
 
     @PostMapping
     @ResponseStatus(code = HttpStatus.CREATED)
-    public void add(@RequestBody CreateBrandRequest createBrandRequest) {
+    public void add(@RequestBody @Valid CreateBrandRequest createBrandRequest) {
         this.brandService.add(createBrandRequest);
     }
 
